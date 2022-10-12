@@ -1,9 +1,12 @@
 from google.colab import drive
 import sys
+import os
+import shlex
 
 import launch
 
-sys.argv += args
+commandline_args = os.environ.get('COMMANDLINE_ARGS', "")
+args = shlex.split(commandline_args)
 
 if "--dgrive" in args:
     drive.mount('/content/drive')
